@@ -7,6 +7,7 @@ import React, { useEffect, useReducer, useState } from 'react';
 import { toast } from 'react-toastify';
 import { getError } from '../utils/error.js';
 import Link from 'next/link.js';
+import { useSession } from 'next-auth/react';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -24,6 +25,7 @@ function reducer(state, action) {
 
 export default function Home() {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const [{ loadingCreate, successDelete }, dispatch] = useReducer(reducer, {
     loading: true,
@@ -180,142 +182,164 @@ export default function Home() {
 
   return (
     <Layout title="CASA">
-      <div className="grid grid-cols-3 items-center justify-items-center mt-3">
-        <button
-          disabled={loadingCreate}
-          onClick={createHandler}
-          className="primary-button text-sm align-middle  w-[100%] "
-        >
-          {loadingCreate ? 'Loading' : 'Crear'}
-        </button>
-        <Link
-          href="/admin/dashboard"
-          className="primary-button align-middle  text-xs text-center w-[100%]"
-        >
-          Dashboard
-        </Link>
-        <Link
-          href="/admin/products"
-          className="primary-button align-middle  text-sm text-center w-[100%]"
-        >
-          Registros
-        </Link>
-      </div>
-
-      <div className="grid grid-cols-2 ">
-        <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow  text-center col-span-2">
-          <div className="mb-3">
-            <div className="grid grid-cols-1 gap-1 md:grid-cols-3">
-              <div className="card p-2 text-center">
-                <h2 className="text-lg font-bold">Resumen </h2>
-                <p className="font-bold">
-                  In: ${formatNumberWithDots(totalIngresos)}
-                </p>
-              </div>
-
-              <div className="card p-2 text-center">
-                <h2 className="text-xl font-bold">TC Master</h2>
-
-                <p className="font-bold">
-                  Out: ${formatNumberWithDots(totalConsumosTCMaster)}
-                </p>
-              </div>
-              <div className="card p-2 text-center">
-                <h2 className="text-xl font-bold">Efectivo</h2>
-
-                <p className="font-bold">
-                  Out: $
-                  {formatNumberWithDots(totalConsumos - totalConsumosTCMaster)}
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2">
-              <div className="card p-2 text-center">
-                <h2 className="text-xl font-bold">Mesada Rafa</h2>
-                <p>Inicial: ${formatNumberWithDots(100000)}</p>
-                <p>
-                  Total Consumos: ${formatNumberWithDots(mesadaRafaelaTotal)}
-                </p>
-
-                <p>Disponible: ${formatNumberWithDots(mesadaRafaela)}</p>
-              </div>
-              <div className="card p-2 text-center">
-                <h2 className="text-xl font-bold">Mesada Marti</h2>
-                <p>Inicial: ${formatNumberWithDots(100000)}</p>
-                <p>
-                  Total Consumos: ${formatNumberWithDots(mesadaMartinaTotal)}
-                </p>
-
-                <p>Disponible: ${formatNumberWithDots(mesadaMartina)}</p>
-              </div>
-            </div>
+      <h1 className="text-center items-center">
+        For testing purposes, you can login using the following credentials:
+        <br />
+        email: <strong>testuser@test.com</strong>
+        <br />
+        password: <strong>TestUser1*</strong>
+      </h1>
+      {!session && (
+        <div className="text-center mt-10">
+          <Link href="/Login" className="primary-button">
+            Login
+          </Link>
+        </div>
+      )}
+      {session && (
+        <>
+          <div className="grid grid-cols-3 items-center justify-items-center mt-3">
+            <button
+              disabled={loadingCreate}
+              onClick={createHandler}
+              className="primary-button text-sm align-middle  w-[100%] "
+            >
+              {loadingCreate ? 'Loading' : 'Crear'}
+            </button>
+            <Link
+              href="/admin/dashboard"
+              className="primary-button align-middle  text-xs text-center w-[100%]"
+            >
+              Dashboard
+            </Link>
+            <Link
+              href="/admin/products"
+              className="primary-button align-middle  text-sm text-center w-[100%]"
+            >
+              Registros
+            </Link>
           </div>
-        </div>
 
-        <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow  text-center">
-          <h2 className="text-lg font-bold">Rafa</h2>
-          <p>In: ${formatNumberWithDots(100000)}</p>
-          <p>Out: ${formatNumberWithDots(mesadaRafaelaTotal)}</p>
+          <div className="grid grid-cols-2 ">
+            <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow  text-center col-span-2">
+              <div className="mb-3">
+                <div className="grid grid-cols-1 gap-1 md:grid-cols-3">
+                  <div className="card p-2 text-center">
+                    <h2 className="text-lg font-bold">Resumen </h2>
+                    <p className="font-bold">
+                      In: ${formatNumberWithDots(totalIngresos)}
+                    </p>
+                  </div>
 
-          <p className="font-bold">
-            Saldo: ${formatNumberWithDots(mesadaRafaela)}
-          </p>
-        </div>
-        <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow text-center">
-          <h2 className="text-xl font-bold">Marti</h2>
-          <p>In: ${formatNumberWithDots(100000)}</p>
-          <p>Out: ${formatNumberWithDots(mesadaMartinaTotal)}</p>
+                  <div className="card p-2 text-center">
+                    <h2 className="text-xl font-bold">TC Master</h2>
 
-          <p className="font-bold">
-            Saldo: ${formatNumberWithDots(mesadaMartina)}
-          </p>
-        </div>
-      </div>
+                    <p className="font-bold">
+                      Out: ${formatNumberWithDots(totalConsumosTCMaster)}
+                    </p>
+                  </div>
+                  <div className="card p-2 text-center">
+                    <h2 className="text-xl font-bold">Efectivo</h2>
 
-      <div>
-        <h1 className="text-2xl my-3 font-bold border-b border-gray-300">
-          Presupuesto disponible
-        </h1>
-        <div>
-          <div className="grid grid-cols-3 mb-5 overflow-hidden">
-            {Object.entries(categorySpent).map(([category, budget]) => (
-              <div key={category}>
-                {categorySpent[category].maxAmount > 0 && (
-                  <div key={category}>
-                    <h2 className="text-xl font-bold overflow-hidden">
-                      {category}
-                    </h2>
-                    <p>
-                      <span className="font-bold">Gastado:</span> $
-                      {formatNumberWithDots(budget.spent)}
-                      <br />
-                      <span className="font-bold">Máximo:</span> $
-                      {formatNumberWithDots(budget.maxAmount)}
-                      <br />
-                      {budget.maxAmount - budget.spent < 0 && (
-                        <div className="text-red-500">
-                          <span className="font-bold">Disponible:</span> $
-                          {formatNumberWithDots(
-                            budget.maxAmount - budget.spent
-                          )}
-                        </div>
-                      )}
-                      {budget.maxAmount - budget.spent > 0 && (
-                        <div className="text-green-700">
-                          <span className="font-bold">Disponible:</span> $
-                          {formatNumberWithDots(
-                            budget.maxAmount - budget.spent
-                          )}
-                        </div>
+                    <p className="font-bold">
+                      Out: $
+                      {formatNumberWithDots(
+                        totalConsumos - totalConsumosTCMaster
                       )}
                     </p>
                   </div>
-                )}
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="card p-2 text-center">
+                    <h2 className="text-xl font-bold">Mesada Rafa</h2>
+                    <p>Inicial: ${formatNumberWithDots(100000)}</p>
+                    <p>
+                      Total Consumos: $
+                      {formatNumberWithDots(mesadaRafaelaTotal)}
+                    </p>
+
+                    <p>Disponible: ${formatNumberWithDots(mesadaRafaela)}</p>
+                  </div>
+                  <div className="card p-2 text-center">
+                    <h2 className="text-xl font-bold">Mesada Marti</h2>
+                    <p>Inicial: ${formatNumberWithDots(100000)}</p>
+                    <p>
+                      Total Consumos: $
+                      {formatNumberWithDots(mesadaMartinaTotal)}
+                    </p>
+
+                    <p>Disponible: ${formatNumberWithDots(mesadaMartina)}</p>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
+
+            <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow  text-center">
+              <h2 className="text-lg font-bold">Rafa</h2>
+              <p>In: ${formatNumberWithDots(100000)}</p>
+              <p>Out: ${formatNumberWithDots(mesadaRafaelaTotal)}</p>
+
+              <p className="font-bold">
+                Saldo: ${formatNumberWithDots(mesadaRafaela)}
+              </p>
+            </div>
+            <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow text-center">
+              <h2 className="text-xl font-bold">Marti</h2>
+              <p>In: ${formatNumberWithDots(100000)}</p>
+              <p>Out: ${formatNumberWithDots(mesadaMartinaTotal)}</p>
+
+              <p className="font-bold">
+                Saldo: ${formatNumberWithDots(mesadaMartina)}
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
+
+          <div>
+            <h1 className="text-2xl my-3 font-bold border-b border-gray-300">
+              Presupuesto disponible
+            </h1>
+            <div>
+              <div className="grid grid-cols-3 mb-5 overflow-hidden">
+                {Object.entries(categorySpent).map(([category, budget]) => (
+                  <div key={category}>
+                    {categorySpent[category].maxAmount > 0 && (
+                      <div key={category}>
+                        <h2 className="text-xl font-bold overflow-hidden">
+                          {category}
+                        </h2>
+                        <p>
+                          <span className="font-bold">Gastado:</span> $
+                          {formatNumberWithDots(budget.spent)}
+                          <br />
+                          <span className="font-bold">Máximo:</span> $
+                          {formatNumberWithDots(budget.maxAmount)}
+                          <br />
+                          {budget.maxAmount - budget.spent < 0 && (
+                            <div className="text-red-500">
+                              <span className="font-bold">Disponible:</span> $
+                              {formatNumberWithDots(
+                                budget.maxAmount - budget.spent
+                              )}
+                            </div>
+                          )}
+                          {budget.maxAmount - budget.spent > 0 && (
+                            <div className="text-green-700">
+                              <span className="font-bold">Disponible:</span> $
+                              {formatNumberWithDots(
+                                budget.maxAmount - budget.spent
+                              )}
+                            </div>
+                          )}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </Layout>
   );
 }
