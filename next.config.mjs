@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ['pbs.twimg.com', 'randomuser.me'], // Add 'randomuser.me' to the domains list
+  },
+};
 
-export default nextConfig;
+module.exports = nextConfig;
