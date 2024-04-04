@@ -182,15 +182,16 @@ export default function Home() {
 
   return (
     <Layout title="CASA">
-      <h1 className="text-center items-center">
-        For testing purposes, you can login using the following credentials:
-        <br />
-        email: <strong>testuser@test.com</strong>
-        <br />
-        password: <strong>TestUser1*</strong>
-      </h1>
       {!session && (
         <div className="text-center mt-10">
+          <h1 className="text-center items-center">
+            For testing purposes, you can login using the following credentials:
+            <br />
+            email: <strong>testuser@test.com</strong>
+            <br />
+            password: <strong>TestUser1*</strong>
+          </h1>
+
           <Link href="/Login" className="primary-button">
             Login
           </Link>
