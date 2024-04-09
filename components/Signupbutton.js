@@ -4,11 +4,10 @@ import { signOut, useSession } from 'next-auth/react';
 import { Menu } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
-import { Store } from '../utils/Store';
 
 const SignupButton = () => {
   const { status, data: session } = useSession();
-  const { dispatch } = useContext(Store);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
