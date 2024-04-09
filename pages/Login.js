@@ -44,6 +44,15 @@ export default function Login() {
   return (
     <Layout title="Login">
       <form className="mx-2 pr-5" onSubmit={handleSubmit(submitHandler)}>
+        <div className="text-center mt-10">
+          <h1 className="text-center items-center">
+            For testing purposes, you can login using the following credentials:
+            <br />
+            email: <strong>testuser@test.com</strong>
+            <br />
+            password: <strong>TestUser1*</strong>
+          </h1>
+        </div>
         <h1 className="mb-1 text-xl font-bold">Ingresa</h1>
         <div className="mb-4">
           ¿No tienes una cuenta? &nbsp;
