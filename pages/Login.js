@@ -7,10 +7,10 @@ import { toast } from 'react-toastify';
 import { getError } from '../utils/error';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { FaRegCopy } from 'react-icons/fa';
 
 export default function Login() {
   const { data: session } = useSession();
-
   const router = useRouter();
   const { redirect } = router.query;
 
@@ -41,6 +41,17 @@ export default function Login() {
     }
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        toast.info('Copied to clipboard!');
+      },
+      (err) => {
+        toast.error('Failed to copy!');
+      }
+    );
+  };
+
   return (
     <Layout title="Login">
       <form className="mx-2 pr-5" onSubmit={handleSubmit(submitHandler)}>
@@ -48,9 +59,18 @@ export default function Login() {
           <h1 className="text-center items-center">
             For testing purposes, you can login using the following credentials:
             <br />
-            email: <strong>testuser@test.com</strong>
+            email: <strong>testuser@test.com</strong>{' '}
+            <button
+              type="button"
+              onClick={() => copyToClipboard('testuser@test.com')}
+            >
+              <FaRegCopy />
+            </button>
             <br />
-            password: <strong>TestUser1*</strong>
+            password: <strong>TestUser1*</strong>{' '}
+            <button type="button" onClick={() => copyToClipboard('TestUser1*')}>
+              <FaRegCopy />
+            </button>
           </h1>
         </div>
         <h1 className="mb-1 text-xl font-bold">Ingresa</h1>
