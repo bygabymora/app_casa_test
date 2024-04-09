@@ -72,28 +72,27 @@ export default function Home() {
         );
 
         const initialCategorySpent = {
-          'Comida y aseo': { spent: 0, maxAmount: 3000000 },
+          'Comida y aseo': { spent: 0, maxAmount: 100000 },
           'Extras Casa': { spent: 0, maxAmount: 1000000 },
-          Medicinas: { spent: 0, maxAmount: 500000 },
+          Medicinas: { spent: 0, maxAmount: 100000 },
           'Mesada Martina': { spent: 0, maxAmount: 100000 },
           'Mesada Rafaela': { spent: 0, maxAmount: 100000 },
-          'Clases Pollos': { spent: 0, maxAmount: 370000 },
-          Gasolina: { spent: 0, maxAmount: 880000 },
-          Mantenimiento: { spent: 0, maxAmount: 200000 },
-          Lavado: { spent: 0, maxAmount: 80000 },
-          Parqueadero: { spent: 0, maxAmount: 50000 },
+          'Clases Pollos': { spent: 0, maxAmount: 100000 },
+          Gasolina: { spent: 0, maxAmount: 100000 },
+          Mantenimiento: { spent: 0, maxAmount: 100000 },
+          Lavado: { spent: 0, maxAmount: 100000 },
+          Parqueadero: { spent: 0, maxAmount: 100000 },
           Peajes: { spent: 0, maxAmount: 100000 },
           Papeles: { spent: 0, maxAmount: 100000 },
-          'Ocio General': { spent: 0, maxAmount: 500000 },
-          Viajes: { spent: 0, maxAmount: 400000 },
-          Cumpleaños: { spent: 0, maxAmount: 400000 },
-          'Comidas afuera': { spent: 0, maxAmount: 800000 },
-          'Ropa Pollos': { spent: 0, maxAmount: 250000 },
-          'Ropa Papás': { spent: 0, maxAmount: 250000 },
-          'Comida Perros': { spent: 0, maxAmount: 300000 },
-          'Guardería Perros': { spent: 0, maxAmount: 200000 },
+          'Ocio General': { spent: 0, maxAmount: 100000 },
+          Viajes: { spent: 0, maxAmount: 100000 },
+          Cumpleaños: { spent: 0, maxAmount: 100000 },
+          'Comidas afuera': { spent: 0, maxAmount: 100000 },
+          'Ropa Pollos': { spent: 0, maxAmount: 100000 },
+          'Ropa Papás': { spent: 0, maxAmount: 100000 },
+          'Comida Perros': { spent: 0, maxAmount: 100000 },
+          'Guardería Perros': { spent: 0, maxAmount: 100000 },
           'Medicina Perros': { spent: 0, maxAmount: 100000 },
-          // Add any other categories you need here in a similar fashion
         };
 
         // Update spent amounts for each category based on fetched data

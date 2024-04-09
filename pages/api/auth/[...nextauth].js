@@ -36,6 +36,7 @@ export default NextAuth({
       async authorize(credentials) {
         await db.connect();
         const user = await User.findOne({ email: credentials.email });
+        console.log('user', user);
         await db.disconnect();
         if (user && bcryptjs.compareSync(credentials.password, user.password)) {
           return {
