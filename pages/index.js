@@ -348,13 +348,12 @@ export async function getServerSideProps() {
 
   const products = await Product.find().sort({ createdAt: -1 }).lean();
   const serializableProducts = products.map((product) => {
-    // Convert all Date objects to strings
     Object.keys(product).forEach((key) => {
       if (product[key] instanceof Date) {
         product[key] = product[key].toISOString();
       }
     });
-    // Convert Mongoose documents to plain objects
+
     return db.convertDocToObj(product);
   });
 
