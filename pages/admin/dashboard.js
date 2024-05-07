@@ -12,10 +12,6 @@ export default function Dashboard() {
   const formatNumberWithDots = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   };
-  const [mesadaRafaela, setMesadaRafaela] = useState(100000);
-  const [mesadaMartina, setMesadaMartina] = useState(100000);
-  const [mesadaRafaelaTotal, setMesadaRafaelaTotal] = useState(0);
-  const [mesadaMartinaTotal, setMesadaMartinaTotal] = useState(0);
 
   const monthPlusOne = fecha.getMonth();
   const yearPlusOne = fecha.getFullYear();
@@ -141,26 +137,6 @@ export default function Dashboard() {
                   Out: $
                   {formatNumberWithDots(totalConsumos - totalConsumosTCMaster)}
                 </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2">
-              <div className="card p-2 text-center">
-                <h2 className="text-xl font-bold">Mesada Rafa</h2>
-                <p>Inicial: ${formatNumberWithDots(100000)}</p>
-                <p>
-                  Total Consumos: ${formatNumberWithDots(mesadaRafaelaTotal)}
-                </p>
-
-                <p>Disponible: ${formatNumberWithDots(mesadaRafaela)}</p>
-              </div>
-              <div className="card p-2 text-center">
-                <h2 className="text-xl font-bold">Mesada Marti</h2>
-                <p>Inicial: ${formatNumberWithDots(100000)}</p>
-                <p>
-                  Total Consumos: ${formatNumberWithDots(mesadaMartinaTotal)}
-                </p>
-
-                <p>Disponible: ${formatNumberWithDots(mesadaMartina)}</p>
               </div>
             </div>
           </div>
