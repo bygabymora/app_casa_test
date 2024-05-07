@@ -3,7 +3,6 @@ import { BsPerson } from 'react-icons/bs';
 import { signOut, useSession } from 'next-auth/react';
 import { Menu } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
-import Cookies from 'js-cookie';
 
 const SignupButton = () => {
   const { status, data: session } = useSession();
@@ -42,8 +41,6 @@ const SignupButton = () => {
   };
 
   const logoutClickHandler = () => {
-    Cookies.remove('cart');
-    dispatch({ type: 'CART_RESET' });
     signOut({ callbackUrl: '/Login' });
   };
 
