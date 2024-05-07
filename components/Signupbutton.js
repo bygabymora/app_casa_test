@@ -77,14 +77,6 @@ const SignupButton = () => {
                   </Menu.Item>
 
                   <Menu.Item>
-                    <div>
-                      <DropdownLink href="/admin/dashboard">
-                        <div className="ml-2">Dashboard</div>
-                      </DropdownLink>
-                    </div>
-                  </Menu.Item>
-
-                  <Menu.Item>
                     <DropdownLink
                       href="/"
                       className="dropdown-link font-bold"

@@ -335,8 +335,8 @@ export default function AdminProductEditScreen() {
                   >
                     <option value="">Selecciona un tipo de compra</option>
                     <optgroup label="Ingreso">
-                      <option value="Salario FL">Salario FL</option>
-                      <option value="Salario GM">Salario GM</option>
+                      <option value="Salario FL">Salario</option>
+
                       <option value="Otro ingreso">Otro Ingreso</option>
                     </optgroup>
                     <optgroup label="Categoría Ocio">
@@ -349,12 +349,10 @@ export default function AdminProductEditScreen() {
                       <option value="Comida y aseo">Comida y aseo</option>
                       <option value="Extras Casa">Extras Casa</option>
                       <option value="Medicinas">Medicinas</option>
-                      <option value="Mesada Martina">Mesada Martina</option>
-                      <option value="Mesada Rafaela">Mesada Rafaela</option>
-                      <option value="Colegio Niñas">Colegio Niñas</option>
+                      <option value="Colegio">Colegio</option>
                       <option value="María">María</option>
-                      <option value="Clases Pollos">Clases Pollos</option>
-                      <option value="Arriendo Casa">Arriendo Casa</option>
+                      <option value="Clases">Clases</option>
+                      <option value="Arriendo Casa">Arriendo</option>
                       <option value="Administración">Administración</option>
                     </optgroup>
                     <optgroup label="Categoría Carro">
@@ -367,8 +365,7 @@ export default function AdminProductEditScreen() {
                     </optgroup>
 
                     <optgroup label="Categoría Ropa">
-                      <option value="Ropa Pollos">Ropa Pollos</option>
-                      <option value="Ropa Papás">Ropa Papás</option>
+                      <option value="Ropa">Ropa</option>
                     </optgroup>
 
                     <optgroup label="Categoría Servicios Públicos">
@@ -378,8 +375,7 @@ export default function AdminProductEditScreen() {
                       <option value="Internet">Internet</option>
                       <option value="Directv">Directv</option>
                       <option value="Netflix">Netflix</option>
-                      <option value="Celular GMG">Celular GMG</option>
-                      <option value="Operacional GMG">Operacional GMG</option>
+
                       <option value="Disney">Disney</option>
                       <option value="YouTube">YouTube</option>
                     </optgroup>
@@ -402,7 +398,6 @@ export default function AdminProductEditScreen() {
                       <option value="Pago TC Bancolombia">
                         Pago TC Bancolombia
                       </option>
-                      <option value="Apto. Cartagena">Apto. Cartagena</option>
                     </optgroup>
                   </select>
                   {errors.typeOfPurchase && (

@@ -184,7 +184,7 @@ export default function Home() {
       )}
       {session && (
         <>
-          <div className="grid grid-cols-3 items-center justify-items-center mt-3">
+          <div className="grid grid-cols-2 items-center justify-items-center mt-3">
             <button
               disabled={loadingCreate}
               onClick={createHandler}
