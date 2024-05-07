@@ -54,9 +54,7 @@ export default function Consumos() {
         'Comida y aseo': { spent: 0, maxAmount: 3000000 },
         'Extras Casa': { spent: 0, maxAmount: 1000000 },
         Medicinas: { spent: 0, maxAmount: 500000 },
-        'Mesada Martina': { spent: 0, maxAmount: 100000 },
-        'Mesada Rafaela': { spent: 0, maxAmount: 100000 },
-        'Clases Pollos': { spent: 0, maxAmount: 370000 },
+
         Gasolina: { spent: 0, maxAmount: 880000 },
         Mantenimiento: { spent: 0, maxAmount: 200000 },
         Lavado: { spent: 0, maxAmount: 80000 },
@@ -67,8 +65,7 @@ export default function Consumos() {
         Viajes: { spent: 0, maxAmount: 400000 },
         Cumpleaños: { spent: 0, maxAmount: 400000 },
         'Comidas afuera': { spent: 0, maxAmount: 800000 },
-        'Ropa Pollos': { spent: 0, maxAmount: 250000 },
-        'Ropa Papás': { spent: 0, maxAmount: 250000 },
+
         'Comida Perros': { spent: 0, maxAmount: 300000 },
         'Guardería Perros': { spent: 0, maxAmount: 200000 },
         'Medicina Perros': { spent: 0, maxAmount: 100000 },
@@ -88,7 +85,6 @@ export default function Consumos() {
     fetchData();
   }, [fecha]);
 
-  // Main categories and their subcategories
   const mainCategories = {
     Ingreso: ['Salario FL', 'Salario GM', 'Otro ingreso'],
     Casa: [
@@ -100,8 +96,6 @@ export default function Consumos() {
       'Clases Pollos',
       'Arriendo Casa',
       'Administración',
-      'Mesada Martina',
-      'Mesada Rafaela',
     ],
     Servicios: [
       'Gas',
@@ -110,8 +104,7 @@ export default function Consumos() {
       'Internet',
       'Directv',
       'Netflix',
-      'Celular GMG',
-      'Operacional GMG',
+
       'Disney',
       'YouTube',
     ],
@@ -133,7 +126,6 @@ export default function Consumos() {
       'Pago TC Master',
       'Pago TC Visa',
       'Pago TC Bancolombia',
-      'Apto. Cartagena',
     ],
   };
 
@@ -194,7 +186,9 @@ export default function Consumos() {
                   <div key={category}>
                     {categorySpent[category].maxAmount > 0 && (
                       <div key={category}>
-                        <h2 className="text-xl font-bold">{category}</h2>
+                        <h2 className="text-xl font-bold overflow-hidden">
+                          {category}
+                        </h2>
                         <p>
                           <span className="font-bold">Gastado:</span> $
                           {formatNumberWithDots(budget.spent)}

@@ -8,8 +8,8 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title : 'Familia Lagos APP'}</title>
-        <meta name="description" content="Familia Lagos APP" />
+        <title>{title ? title : 'Familia  APP'}</title>
+        <meta name="description" content="Familia  APP" />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="apple-touch-icon"

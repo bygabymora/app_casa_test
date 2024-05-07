@@ -75,9 +75,7 @@ export default function Home() {
           'Comida y aseo': { spent: 0, maxAmount: 100000 },
           'Extras Casa': { spent: 0, maxAmount: 1000000 },
           Medicinas: { spent: 0, maxAmount: 100000 },
-          'Mesada Martina': { spent: 0, maxAmount: 100000 },
-          'Mesada Rafaela': { spent: 0, maxAmount: 100000 },
-          'Clases Pollos': { spent: 0, maxAmount: 100000 },
+          Clases: { spent: 0, maxAmount: 100000 },
           Gasolina: { spent: 0, maxAmount: 100000 },
           Mantenimiento: { spent: 0, maxAmount: 100000 },
           Lavado: { spent: 0, maxAmount: 100000 },
@@ -88,8 +86,6 @@ export default function Home() {
           Viajes: { spent: 0, maxAmount: 100000 },
           Cumpleaños: { spent: 0, maxAmount: 100000 },
           'Comidas afuera': { spent: 0, maxAmount: 100000 },
-          'Ropa Pollos': { spent: 0, maxAmount: 100000 },
-          'Ropa Papás': { spent: 0, maxAmount: 100000 },
           'Comida Perros': { spent: 0, maxAmount: 100000 },
           'Guardería Perros': { spent: 0, maxAmount: 100000 },
           'Medicina Perros': { spent: 0, maxAmount: 100000 },
@@ -119,11 +115,6 @@ export default function Home() {
   const [totalConsumos, setTotalConsumos] = useState(0);
   const [totalConsumosTCMaster, setTotalConsumosTCMaster] = useState(0);
 
-  const [mesadaRafaela, setMesadaRafaela] = useState(100000);
-  const [mesadaMartina, setMesadaMartina] = useState(100000);
-  const [mesadaRafaelaTotal, setMesadaRafaelaTotal] = useState(0);
-  const [mesadaMartinaTotal, setMesadaMartinaTotal] = useState(0);
-
   useEffect(() => {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -143,8 +134,7 @@ export default function Home() {
           ingresosResponse.data &&
           typeof ingresosResponse.data === 'object'
         ) {
-          const { consumos, mesadaRafaela, mesadaMartina } =
-            ingresosResponse.data;
+          const { consumos } = ingresosResponse.data;
 
           const totalIngresos = consumos
             .filter((item) =>
@@ -152,10 +142,6 @@ export default function Home() {
             )
             .reduce((sum, item) => sum + item.totalValue, 0);
 
-          setMesadaRafaela(100000 - mesadaRafaela);
-          setMesadaMartina(100000 - mesadaMartina);
-          setMesadaRafaelaTotal(mesadaRafaela);
-          setMesadaMartinaTotal(mesadaMartina);
           setTotalIngresos(totalIngresos);
         }
 
@@ -249,48 +235,7 @@ export default function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="grid grid-cols-2">
-                  <div className="card p-2 text-center">
-                    <h2 className="text-xl font-bold">Mesada Rafa</h2>
-                    <p>Inicial: ${formatNumberWithDots(100000)}</p>
-                    <p>
-                      Total Consumos: $
-                      {formatNumberWithDots(mesadaRafaelaTotal)}
-                    </p>
-
-                    <p>Disponible: ${formatNumberWithDots(mesadaRafaela)}</p>
-                  </div>
-                  <div className="card p-2 text-center">
-                    <h2 className="text-xl font-bold">Mesada Marti</h2>
-                    <p>Inicial: ${formatNumberWithDots(100000)}</p>
-                    <p>
-                      Total Consumos: $
-                      {formatNumberWithDots(mesadaMartinaTotal)}
-                    </p>
-
-                    <p>Disponible: ${formatNumberWithDots(mesadaMartina)}</p>
-                  </div>
-                </div>
               </div>
-            </div>
-
-            <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow  text-center">
-              <h2 className="text-lg font-bold">Rafa</h2>
-              <p>In: ${formatNumberWithDots(100000)}</p>
-              <p>Out: ${formatNumberWithDots(mesadaRafaelaTotal)}</p>
-
-              <p className="font-bold">
-                Saldo: ${formatNumberWithDots(mesadaRafaela)}
-              </p>
-            </div>
-            <div className="w-full px-3 py-2 my-2 leading-tight border rounded shadow text-center">
-              <h2 className="text-xl font-bold">Marti</h2>
-              <p>In: ${formatNumberWithDots(100000)}</p>
-              <p>Out: ${formatNumberWithDots(mesadaMartinaTotal)}</p>
-
-              <p className="font-bold">
-                Saldo: ${formatNumberWithDots(mesadaMartina)}
-              </p>
             </div>
           </div>
 

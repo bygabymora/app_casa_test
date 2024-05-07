@@ -37,7 +37,7 @@
     "postcss": "^8.4.26",
     "tailwindcss": "^3.3.3"
   },
-  "description": "App Flia Lagos",
+  "description": "App Flia",
   "main": "next.config.js",
   "author": "",
   "license": "ISC"
