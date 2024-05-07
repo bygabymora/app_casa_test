@@ -45,10 +45,6 @@ const Navbar = () => {
             <BsSpeedometer className="uil uil-estate nav__icon" />
             Consumos
           </Link>
-          <Link href="/admin/dashboard" className="nav__link">
-            <MdOutlineSpaceDashboard className="uil uil-estate nav__icon" />
-            Dashboard
-          </Link>
         </div>
         <BiXCircle
           className="uil uil-times nav__close"

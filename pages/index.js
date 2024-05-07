@@ -192,12 +192,7 @@ export default function Home() {
             >
               {loadingCreate ? 'Loading' : 'Crear'}
             </button>
-            <Link
-              href="/admin/dashboard"
-              className="primary-button align-middle  text-xs text-center w-[100%]"
-            >
-              Dashboard
-            </Link>
+
             <Link
               href="/admin/products"
               className="primary-button align-middle  text-sm text-center w-[100%]"
